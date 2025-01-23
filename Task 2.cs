@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using JetBrains.Annotations;
 using UnityEngine;
 
+//Anthony Rattigan and Donovan Peckham
 public class Task2 : MonoBehaviour
 {
     public float X = 10f;
