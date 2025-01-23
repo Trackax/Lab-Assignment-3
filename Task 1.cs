@@ -3,7 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //Anthony Rattigan and Donovan Peckham
-public class pt1 : MonoBehaviour
+
+//we interpreted the task as the percentages being difficulty multipliers for each section that are uncapped
+//so a course with 100 modules and nothing else would still be 10 challenge score
+//a course with 10 of each type and with a teacher that has taught before would calculate to exactly 10 challenge score
+public class Task1 : MonoBehaviour
 {
     //public inputs
     public string courseName;
@@ -16,8 +20,6 @@ public class pt1 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //interpreted as the percentages being difficulty multipliers that are uncapped
-        //so a course with 100 modules and nothing else would still be 10 challenge score
         
         //calculating the challenge score based on given values for the course multiplied by the difficulty percentage
         float score = 0;

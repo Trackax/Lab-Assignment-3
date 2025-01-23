@@ -4,34 +4,43 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //Anthony Rattigan and Donovan Peckham
+
+//calculate what bills are paid based on the given payment amount
+//use the highest bills possible
+//ensure no remaining money unpaid
 public class Task3 : MonoBehaviour
-{
-    public int X = 0;
-    private int Twenty;
-    private int Ten;
-    private int Five;
-    private int One;
+{  
+    //public var for amount paid
+    public int payment;
+    
     // Start is called before the first frame update
     void Start()
     {
-        Twenty = X / 20;
-        X = X % 20;
-        Ten = X / 10;
-        X = X % 10;
-        Five = X / 5;
-        X = X % 5;
-        One = X / 1;
-        X = X % 1;
-        Debug.Log("$20: " + Twenty);
-        Debug.Log("$10: " + Ten);
-        Debug.Log("$5: " + Five);
-        Debug.Log("$1: " + One);
-        Debug.Log("Remainder: $" + X);
-    }
+        //var to track remaining money
+        int remaining = payment;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        //vars for amounts paid of each bill
+        int twenty = 0;
+        int ten = 0;
+        int five = 0;
+        int one = 0;
+
+        //calculate amount of each bill starting with the highest bill going down 
+        //go down the line starting with the highest bill
+        twenty = remaining / 20;    //int division will only keep the whole number value of the total, therefore the total amount of that bill
+        remaining %= 20;                 //modulus to take only the remainder, therfore the amount still left upaid
+        ten = remaining / 10;
+        remaining %= 10;
+        five = remaining / 5;
+        remaining %= 5;
+        one = remaining / 1;
+        remaining %= 1;
+
+        Debug.Log("Amount Paid of Each Bill");
+        Debug.Log("$20: " + twenty);
+        Debug.Log("$10: " + ten);
+        Debug.Log("$5: " + five);
+        Debug.Log("$1: " + one);
+        Debug.Log("Amount Remaining Unpaid: $" + remaining);
     }
 }
