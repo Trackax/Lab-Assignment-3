@@ -2,26 +2,35 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Task1 : MonoBehaviour
+//Anthony Rattigan and Donovan Peckham
+public class pt1 : MonoBehaviour
 {
-    public string Course_Name = "X";
-    public float Challenge;
-    public float Modules = 1f;
-    public float Reading = 1f;
-    public float Quizes = 1f;
-    public float Assignments = 1f;
-    public float Taught;
+    //public inputs
+    public string courseName;
+    public int numModules;
+    public int numReadings;
+    public int numQuizzes;
+    public int numAssignments;
+    public bool hasTaught;
+
     // Start is called before the first frame update
     void Start()
     {
-        float Challenge = Modules * 0.15f + Reading * 0.3f + Quizes * .15f + Assignments * .3f + Taught * 1;
-        Debug.Log("Course - " + Course_Name);
-        Debug.Log(Challenge);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
+        //interpreted as the percentages being difficulty multipliers that are uncapped
+        //so a course with 100 modules and nothing else would still be 10 challenge score
         
+        //calculating the challenge score based on given values for the course multiplied by the difficulty percentage
+        float score = 0;
+        score += numModules * 0.15f;
+        score += numReadings * 0.3f;
+        score += numQuizzes * 0.15f;
+        score += numAssignments * 0.3f;
+        if (hasTaught) score++; //add 1 to challenge score if teacher has taught before, instead of 0.1 given that it is an all or nothing option
+        if (score > 10) score = 10; //set score to 10 if values total more than 10, as 10 is the max challenge score
+        if (score < 1) score = 1; //set score to 1 if values total less than 1, as 1 is the minimum challenge score
+        
+        //Display Course Name and Challenge Score
+        Debug.Log("Course Name: " + courseName);
+        Debug.Log("Challenge Score: " + score);
     }
 }
